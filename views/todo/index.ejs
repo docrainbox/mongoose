@@ -1,0 +1,44 @@
+<!-- Find all the todo items and bullet list them -->
+<ul>
+	<% todos.forEach(function(todo) { %>
+		<li class="todo">
+			<span><%=todo.name%></span>
+			<input class="edit" data-id="<%=todo.id%>" style="display:none" value="<%=todo.name%>">
+		</li>
+
+	<% }); %>
+</ul>
+
+<!-- Form to get a new todo action -->
+<form method="post" action="/">
+	<input autofocus name="name"/>
+	<button type="submit">Submit Todo</button>
+</form>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+
+<!-- What to do when an item is double clicked for update -->
+<script>
+	$('.todo').on('dblclick',function(event) {
+		var self = $(this),
+			input = self.find('input'),
+			span = self.find('span');
+			span.hide();
+			input.show();
+	});
+
+	$('.edit').on('blur',function(event) {
+		var self = $(this),
+			span = self.siblings('span'),
+			request = $.ajax({
+				type:"PUT",
+				data:{name:self.val()},
+				url:'/' + self.attr('data-id')
+			});
+		request.done(function() {
+			self.hide();
+			span.text(self.val()).show();
+		});
+	});
+
+</script>

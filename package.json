@@ -1,0 +1,24 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "MongoDB ORM and Mongoose",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies":{
+    "express":"*",
+	"morgan":"*",
+	"ejs":"*",
+	"body-parser":"*",
+    "mongodb":"*",
+	"mongoose":"*"
+  },
+  "keywords": [
+    "Mongoose",
+    "Mongo"
+  ],
+  "author": "Ram Srinivasan",
+  "license": "ISC"
+}
